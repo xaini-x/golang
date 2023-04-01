@@ -8,7 +8,6 @@ import (
 	"net/http"
 	"strconv"
 	"time"
-
 	"github.com/gorilla/mux"
 )
 
@@ -42,19 +41,19 @@ func main() {
 	r := mux.NewRouter()
 
 	// Create a new database
-	courses = append(courses, Course{CourseId: "111", CourseName: "Course1", CoursePrice: "123" , Author: &Author{Fullname: "xaini 's" , Website:"github.com/xaini-x"}})
-	courses = append(courses, Course{CourseId: "111", CourseName: "Course2", CoursePrice: "167" , Author: &Author{Fullname: "xerx" , Website:"github.com/f"}})
-	courses = append(courses, Course{CourseId: "111", CourseName: "Course3", CoursePrice: "133" , Author: &Author{Fullname: "zoro" , Website:"github.com/g"}})
-	courses = append(courses, Course{CourseId: "111", CourseName: "Course4", CoursePrice: "138" , Author: &Author{Fullname: "aryaa" , Website:"github.com/v"}})
-//listen to port
+	courses = append(courses, Course{CourseId: "111", CourseName: "Course1", CoursePrice: "123", Author: &Author{Fullname: "xaini 's", Website: "github.com/xaini-x"}})
+	courses = append(courses, Course{CourseId: "111", CourseName: "Course2", CoursePrice: "167", Author: &Author{Fullname: "xerx", Website: "github.com/f"}})
+	courses = append(courses, Course{CourseId: "111", CourseName: "Course3", CoursePrice: "133", Author: &Author{Fullname: "zoro", Website: "github.com/g"}})
+	courses = append(courses, Course{CourseId: "111", CourseName: "Course4", CoursePrice: "138", Author: &Author{Fullname: "aryaa", Website: "github.com/v"}})
+	//listen to port
 
-r.HandleFunc("/" , ServerHome).Methods("GET")
-r.HandleFunc("/getCourses" , GetAllCourses).Methods("GET")
-r.HandleFunc("/oneCourse/{id}" , GetOneCourse).Methods("GET")
-r.HandleFunc("/create" ,CreateOneCourse ).Methods("POST")
-r.HandleFunc("/updateOne/{id}" , UpdateOnrCourse).Methods("PUT")
-r.HandleFunc("/deleteOne/{id}" , deleteCourse).Methods("DELETE")
-log.Fatal(http.ListenAndServe(":8080" , r))
+	r.HandleFunc("/", ServerHome).Methods("GET")
+	r.HandleFunc("/getCourses", GetAllCourses).Methods("GET")
+	r.HandleFunc("/oneCourse/{id}", GetOneCourse).Methods("GET")
+	r.HandleFunc("/create", CreateOneCourse).Methods("POST")
+	r.HandleFunc("/updateOne/{id}", UpdateOnrCourse).Methods("PUT")
+	r.HandleFunc("/deleteOne/{id}", deleteCourse).Methods("DELETE")
+	log.Fatal(http.ListenAndServe(":8080", r))
 }
 
 func GetAllCourses(w http.ResponseWriter, r *http.Request) {
